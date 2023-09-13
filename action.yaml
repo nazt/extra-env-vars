@@ -1,0 +1,17 @@
+name: 'extra-env-vars'
+author: 'Nat'
+description: 'Do something with the environment variables'
+
+inputs:
+  filename:
+    description: 'Name of the file'
+    required: true
+    default: .env
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.filename }}
+branding:
+  icon: terminal
+  color: green
