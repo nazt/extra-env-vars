@@ -1,6 +1,19 @@
 #!/bin/bash
 set -e
 
+function load_env() {
+  if [[ -f "$1" ]]; then
+    while IFS= read -r line; do
+      if [[ "$line" =~ ^[a-zA-Z_]+[a-zA-Z0-9_]*= ]]; then
+        echo "$line" >> $GITHUB_ENV
+        echo "$line"
+      fi
+    done < "$1"
+  else
+    echo "Warning: $1 does not exist"
+  fi
+}
+
 
 # GITHUB_WORKFLOW_REF="A/B/.github/workflows/pull-reconfig.yml@refs/heads/develop"
 
