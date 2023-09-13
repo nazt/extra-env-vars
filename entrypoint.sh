@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 
+
+# GITHUB_WORKFLOW_REF="A/B/.github/workflows/pull-reconfig.yml@refs/heads/develop"
+
 TEMP_PART=$(echo "$GITHUB_WORKFLOW_REF" | awk -F "@" '{print $1}')
 
 # Remove the prefix up to the last slash to get only the file path
